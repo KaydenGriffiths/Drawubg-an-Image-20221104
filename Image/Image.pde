@@ -3,7 +3,7 @@ int appWidth, appHeight;
 float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
 PImage pic;
 //
-size(800, 600); //Landscape
+size(1100, 800); //Landscape
 //Copy Display Algorithm
 appWidth = width;
 appHeight = height;
