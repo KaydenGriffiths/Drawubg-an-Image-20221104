@@ -1,10 +1,20 @@
-//Global Variables 
+//Global Variables
 int appWidth, appHeight;
+float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
 //
-size(1000, 800); //Landscape
+size(800, 600); //Landscape
 //Copy Display Algorithm
 appWidth = width;
 appHeight = height;
 //
+//Population
+pic = loadImage("");
+backgroundImageX = appWidth*0;
+backgroundImageY = appHeight*0;
+backgroundImageWidth = appWidth-1;
+backgroundImageHeight = appHeight-1;
+//
 //Rectangular Layout and Image Drawing to CANVAS
-rect(backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight);
+rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
+//
+//image( pic, backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight);
