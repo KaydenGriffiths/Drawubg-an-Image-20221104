@@ -8,7 +8,7 @@ Boolean widthLarger=false, heightLarger=false;
 PImage pic;
 Boolean nightMode=false;
 //
-size(1200, 900); //Landscape
+size(400, 360); //Landscape
 //Copy Display Algorithm from Hello World
 appWidth = width;
 appHeight = height;
@@ -43,7 +43,6 @@ if ( appWidth >= picWidth ) {
   picWidthAdjusted = appWidth;
   //
   if ( widthLarger == true ) imageWidthRatio = largerDimension / largerDimension;
-  if ( heightLarger == true ) imageWidthRatio = smallerDimension / largerDimension;
   //
   if ( appHeight >= picHeight ) {
     //Calculated Dimension b/c smaller than width
@@ -51,10 +50,22 @@ if ( appWidth >= picWidth ) {
     if ( heightLarger == true ) imageHeightRatio = largerDimension / largerDimension;
     picHeightAdjusted = picWidthAdjusted * imageHeightRatio;
   } else {
+
     //Image smaller than CANVAS needs separate algorithm
+    if ( picWidth >= appWidth ) {} else  { picWidthAdjusted = appWidth; 
+} 
+{
+  //
+  if ( heightLarger == true ) imageWidthRatio = smallerDimension * largerDimension;
+  //
+  if ( appHeight >= picWidth ) {
+    //Calculated Dimension b/c smaller than width
+    picHeightAdjusted = picWidthAdjusted / imageHeightRatio;
   }
-} else {
-  //Image smaller than CANVAS, needs separate algorithm
+} {
+      //Image smaller than CANVAS, needs separate algorithm
+    }
+  }
 }
 //
 //Population
