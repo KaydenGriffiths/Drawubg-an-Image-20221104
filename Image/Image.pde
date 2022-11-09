@@ -8,7 +8,16 @@ Boolean widthLarger=false, heightLarger=false;
 PImage pic;
 Boolean nightMode=false;
 //
-size(400, 360); //Landscape
+void setup() {}//End setup
+//
+void draw() {}//End Draw
+//
+void keyPressed() {}//End keyPressed
+//
+void mousePressed() {}//End mousePressed
+//
+//End main Program
+size(1000, 800); //Landscape
 //Copy Display Algorithm from Hello World
 appWidth = width;
 appHeight = height;
@@ -40,9 +49,10 @@ if ( picWidth >= picHeight ) { //True if Landscape or Square
 float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
 //We know the width is the larger dimension
 if ( appWidth >= picWidth ) {
-  picWidthAdjusted = appWidth;
+  picWidthAdjusted = appWidth; //Stretching larger dimension
   //
   if ( widthLarger == true ) imageWidthRatio = largerDimension / largerDimension;
+  if ( heightLarger == true ) imageWidthRatio = smallerDimension / largerDimension;
   //
   if ( appHeight >= picHeight ) {
     //Calculated Dimension b/c smaller than width
@@ -50,22 +60,10 @@ if ( appWidth >= picWidth ) {
     if ( heightLarger == true ) imageHeightRatio = largerDimension / largerDimension;
     picHeightAdjusted = picWidthAdjusted * imageHeightRatio;
   } else {
-
     //Image smaller than CANVAS needs separate algorithm
-    if ( picWidth >= appWidth ) {} else  { picWidthAdjusted = appWidth; 
-} 
-{
-  //
-  if ( heightLarger == true ) imageWidthRatio = smallerDimension * largerDimension;
-  //
-  if ( appHeight >= picWidth ) {
-    //Calculated Dimension b/c smaller than width
-    picHeightAdjusted = picWidthAdjusted / imageHeightRatio;
   }
-} {
-      //Image smaller than CANVAS, needs separate algorithm
-    }
-  }
+} else {
+  //Image smaller than CANVAS, needs separate algorithm
 }
 //
 //Population
