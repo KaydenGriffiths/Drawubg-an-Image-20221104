@@ -4,10 +4,9 @@
 //Global Variables
 int appWidth, appHeight;
 float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
-float smallerDimension, largerDimension, imageWidthRatio=0.0, imageHeightRatio=0.0;
-Boolean widthLarger=false, heightLarger=false;
+float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
 PImage pic;
-Boolean nightMode=true;
+Boolean nightMode=false;
 //
 void setup()
 {
@@ -23,6 +22,8 @@ void setup()
   int picHeight = 600;
   //
   //Image Orientation: Landscape, Square, Portrait
+  float smallerDimension, largerDimension, imageWidthRatio=0.0, imageHeightRatio=0.0;
+  Boolean widthLarger=false, heightLarger=false;
   if ( picWidth >= picHeight ) { //True if Landscape or Square
     largerDimension = picWidth;
     smallerDimension = picHeight;
@@ -35,17 +36,14 @@ void setup()
   //
   //Teaching Example: width is known to be larger
   //Better Image Stretch Algorithm
-  float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
   if ( appWidth >= picWidth ) {
     picWidthAdjusted = appWidth; //Stretching larger dimension
     //
     if ( widthLarger == true ) imageWidthRatio = largerDimension / largerDimension;
     //
-    //
     if ( appHeight >= picHeight ) {
       //Calculated Dimension b/c smaller than width
       if ( widthLarger == true ) imageHeightRatio = smallerDimension / largerDimension;
-      //
       picHeightAdjusted = picWidthAdjusted * imageHeightRatio;
       if ( appHeight < picHeightAdjusted ) {
         println("STOP: image is too big for CANVAS");
@@ -68,17 +66,17 @@ void setup()
   backgroundImageHeight = appHeight-1;
   //
   //Verify Variable Values after Algorithm
-  println("App Width:", appWidth, "and App Height:", appHeight);
+  println("App Width:", appWidth, " and App Height:", appHeight);
   println("Image dimensions are:", picWidth, picHeight);
-  println("Larger Image Dimension is:", largerDimension);
-  println("Adjusted Image Dimensions are (stretch is goal):", picWidthAdjusted, picHeightAdjusted);
+  println("Larger Image dimension is:", largerDimension);
+  println("Adjusted Image dimesnions are (stretch is goal):", picWidthAdjusted, picHeightAdjusted);
   //
   //Rectangular Layout and Image Drawing to CANVAS
   //rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
   //
   //Background Image must be single executed code
   if ( nightMode == false ) tint(255, 50); //Gray Scale, Day use: use 1/2 tint value for white (i.e. 128/256=1/2)
-  if ( nightMode == true ) tint(64, 64, 40, 127.5); //RGB: Night Mode
+  if ( nightMode == true ) tint(64, 64, 40, 50); //RGB: Night Mode
   image( pic, backgroundImageX, backgroundImageY, picWidthAdjusted, picHeightAdjusted);
 }//End setup
 //
@@ -89,7 +87,19 @@ void keyPressed() {
 }//End keyPressed
 //
 void mousePressed() {
+  //  
+  //Mouse Pressed will control background image
+  if ( mouseButton == LEFT) {
+    nightMode = true;
+    rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
+    tint(64, 64, 40, 85); //RGB: Night Mode
+    image( pic, backgroundImageX, backgroundImageY, picWidthAdjusted, picHeightAdjusted);
+  }
+  if ( mouseButton == RIGHT ) {
+    nightMode = false;
+    tint(255, 50); //Gray Scale, Day use: use 1/2 tint value for white (i.e. 128/256=1/2)
+    image(pic, backgroundImageX, backgroundImageY, picWidthAdjusted, picHeightAdjusted);
+  }
 }//End mousePressed
 //
 //End Main Program
-//
