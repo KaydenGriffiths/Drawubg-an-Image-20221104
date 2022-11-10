@@ -66,7 +66,7 @@ void setup()
   }
   //
   //Population
-  pic = loadImage("../Images Used/Landscape -or- square/Obi-wan-star-wars-jedi-23864621-800-600.jpg");
+  pic = loadImage("../Images Used/Landscape/Obi-wan-star-wars-jedi-23864621-800-600.jpg");
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
