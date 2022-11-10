@@ -7,6 +7,8 @@ float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageH
 float topX, topY, topWidth, topHeight;
 float bottomX, bottomY, bottomWidth, bottomHeight;
 float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
+float picWidthAdjusted2=0.0, picHeightAdjusted2=0.0;
+float picWidthAdjusted3=0.0, picHeightAdjusted3=0.0;
 PImage pic, pic2, pic3;
 Boolean nightMode=false;
 int tintDayMode=255, tintDayModeOpacity=50, tintRed=64, tintGreen=64, tintBlue=40, tintNightModeOpacity=85;
@@ -19,18 +21,19 @@ void setup()
   appHeight = height;
   //
   //Image Dimensions for Aspect Ratio
-  int picWidth2 = 675;
-  int picHeight2 = 1200;
-  //int picWidth3 = ;
-  //int picHeight3 = ;
-  //Obi-wan-star-wars-jedi-23864621-800-600.jpg
-  //Note: Dimensions are found in the image file / Right Click / Properties / Details
   int picWidth = 800;
   int picHeight = 600;
+  int picWidth2 = 2000;
+  int picHeight2 = 1400;
+  int picWidth3 = 675;
+  int picHeight3 = 1200;
+  //Obi-wan-star-wars-jedi-23864621-800-600.jpg
+  //Note: Dimensions are found in the image file / Right Click / Properties / Details
   //
   //Image Orientation: Landscape, Square, Portrait
   float smallerDimension, largerDimension, imageWidthRatio=0.0, imageHeightRatio=0.0;
-  float smallerDimension2, largerDimension2;
+  float smallerDimension2, largerDimension2, imageWidthRatio2=0.0, imageHeightRatio2=0.0;
+  float smallerDimension3, largerDimension3, imageWidthRatio3=0.0, imageHeightRatio3=0.0;
   Boolean widthLarger=false, heightLarger=false, widthLarger2=false, heightLarger2=false;
   if ( picWidth >= picHeight ) { //True if Landscape or Square
     largerDimension = picWidth;
@@ -46,6 +49,9 @@ void setup()
     smallerDimension2 = picHeight2;
     widthLarger2 = true;
     //Landscape image larger image to smaller rectangle (or larger)
+    picWidthAdjusted2 = picWidth2;//Reducing or Strecth image
+    imageHeightRatio2 = smallerDimension2 / largerDimension2;
+    picHeightAdjusted2 = picWidthAdjusted2 * imageHeightRatio2;
   } else { //False if Portrait
     largerDimension2 = picHeight2;
     smallerDimension2 = picWidth2;
@@ -64,6 +70,7 @@ void setup()
       //Calculated Dimension b/c smaller than width
       if ( widthLarger == true ) imageHeightRatio = smallerDimension / largerDimension;
       picHeightAdjusted = picWidthAdjusted * imageHeightRatio;
+      println("here", picWidthAdjusted2, picHeightAdjusted2);
       if ( appHeight < picHeightAdjusted ) {
         println("STOP: image is too big for CANVAS");
         exit(); //stop further use of the APP
@@ -113,7 +120,7 @@ void setup()
 //
 void draw() 
 {
-  image(pic2, topX, topY, topWidth, topHeight);
+  image(pic2, topX, topY, picWidthAdjusted2, picHeightAdjusted2);
   image(pic3, bottomX, bottomY, bottomWidth, bottomHeight);
 }//End draw
 //
