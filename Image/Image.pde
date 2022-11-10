@@ -7,7 +7,7 @@ float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageH
 float topX, topY, topWidth, topHeight;
 float bottomX, bottomY, bottomWidth, bottomHeight;
 float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
-PImage pic;
+PImage pic, pic2, pic3;
 Boolean nightMode=false;
 int tintDayMode=255, tintDayModeOpacity=50, tintRed=64, tintGreen=64, tintBlue=40, tintNightModeOpacity=85;
 //
@@ -79,8 +79,8 @@ void setup()
   //
   //Population
   pic = loadImage("../Images Used/Landscape/Obi-wan-star-wars-jedi-23864621-800-600.jpg");
-  pic2 = loadImage("../Images Used/Landscape/");
-  pic3 = loadImage("../Images Used/Landscape/");
+  pic2 = loadImage("../Images Used/Landscape/Bike.jpg");
+  pic3 = loadImage("../Images Used/Portrait/Darth-Vader.jpg");
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
@@ -111,7 +111,10 @@ void setup()
   image( pic, backgroundImageX, backgroundImageY, picWidthAdjusted, picHeightAdjusted);
 }//End setup
 //
-void draw() {
+void draw() 
+{
+  image(pic2, topX, topY, topWidth, topHeight);
+  image(pic3, bottomX, bottomY, bottomWidth, bottomHeight);
 }//End draw
 //
 void keyPressed() {
