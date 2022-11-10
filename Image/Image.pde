@@ -19,8 +19,8 @@ void setup()
   appHeight = height;
   //
   //Image Dimensions for Aspect Ratio
-  int picWidth2 = ;
-  int picHeight2 = ;
+  //int picWidth2 = ;
+  //int picHeight2 = ;
   //int picWidth3 = ;
   //int picHeight3 = ;
   //Obi-wan-star-wars-jedi-23864621-800-600.jpg
@@ -66,7 +66,7 @@ void setup()
   }
   //
   //Population
-  pic = loadImage("../Images Used/Obi-wan-star-wars-jedi-23864621-800-600.jpg");
+  pic = loadImage("../Images Used/Landscape -or- square/Obi-wan-star-wars-jedi-23864621-800-600.jpg");
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
