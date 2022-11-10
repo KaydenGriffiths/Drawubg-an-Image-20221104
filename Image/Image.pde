@@ -4,19 +4,25 @@
 //Global Variables
 int appWidth, appHeight;
 float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
+float topX, topY, topWidth, topHeight;
+float bottomX, bottomY, bottomWidth, bottomHeight;
 float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
 PImage pic;
 Boolean nightMode=false;
-int tintDayMode=255, tintDayModeOpacity=50, tintR=64, tintG=64, tintB=40, tintNightModeOpacity=85;
+int tintDayMode=255, tintDayModeOpacity=50, tintRed=64, tintGreen=64, tintBlue=40, tintNightModeOpacity=85;
 //
 void setup()
 {
-  size(1000, 800); //Landscape
+  size(800, 600); //Landscape
   //Copy Display Algorithm from Hello World
   appWidth = width;
   appHeight = height;
   //
   //Image Dimensions for Aspect Ratio
+  int picWidth2 = ;
+  int picHeight2 = ;
+  //int picWidth3 = ;
+  //int picHeight3 = ;
   //Obi-wan-star-wars-jedi-23864621-800-600.jpg
   //Note: Dimensions are found in the image file / Right Click / Properties / Details
   int picWidth = 800;
@@ -65,6 +71,14 @@ void setup()
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
   backgroundImageHeight = appHeight-1;
+  topX = appWidth * 1/4;
+  topY = appHeight * 1/20;
+  topWidth = appWidth * 1/2;
+  topHeight = appHeight * 2/3;
+  bottomX = appWidth * 1/2;
+  bottomY= appHeight * 3/4;
+  bottomWidth = appWidth * 1/4;
+  bottomHeight = appHeight * 1/5;
   //
   //Verify Variable Values after Algorithm
   println("App Width:", appWidth, " and App Height:", appHeight);
@@ -74,10 +88,12 @@ void setup()
   //
   //Rectangular Layout and Image Drawing to CANVAS
   //rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
+  rect( topX, topY, topWidth, topHeight );
+  rect( bottomX, bottomY, bottomWidth, bottomHeight );
   //
   //Background Image must be single executed code
   if ( nightMode == false ) tint(tintDayMode, tintDayModeOpacity); //Gray Scale, Day use: use 1/2 tint value for white (i.e. 128/256=1/2)
-  if ( nightMode == true ) tint(tintR, tintG, tintB, tintNightModeOpacity); //RGB: Night Mode
+  if ( nightMode == true ) tint(tintRed, tintGreen, tintBlue, tintNightModeOpacity); //RGB: Night Mode
   image( pic, backgroundImageX, backgroundImageY, picWidthAdjusted, picHeightAdjusted);
 }//End setup
 //
@@ -98,7 +114,8 @@ void mousePressed() {
   }
   if ( mouseButton == RIGHT ) {
     nightMode = false;
-    tint(255, 50); //Gray Scale, Day use: use 1/2 tint value for white (i.e. 128/256=1/2)
+    rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
+    tint(255, 50); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
     image(pic, backgroundImageX, backgroundImageY, picWidthAdjusted, picHeightAdjusted);
   }
 }//End mousePressed
