@@ -19,8 +19,8 @@ void setup()
   appHeight = height;
   //
   //Image Dimensions for Aspect Ratio
-  //int picWidth2 = ;
-  //int picHeight2 = ;
+  int picWidth2 = 675;
+  int picHeight2 = 1200;
   //int picWidth3 = ;
   //int picHeight3 = ;
   //Obi-wan-star-wars-jedi-23864621-800-600.jpg
@@ -30,7 +30,8 @@ void setup()
   //
   //Image Orientation: Landscape, Square, Portrait
   float smallerDimension, largerDimension, imageWidthRatio=0.0, imageHeightRatio=0.0;
-  Boolean widthLarger=false, heightLarger=false;
+  float smallerDimension2, largerDimension2;
+  Boolean widthLarger=false, heightLarger=false, widthLarger2=false, heightLarger2=false;
   if ( picWidth >= picHeight ) { //True if Landscape or Square
     largerDimension = picWidth;
     smallerDimension = picHeight;
@@ -39,6 +40,17 @@ void setup()
     largerDimension = picHeight;
     smallerDimension = picWidth;
     heightLarger = true;
+  }
+  if ( picWidth2 >= picHeight2 ) { //True if Landscape or Square
+    largerDimension2 = picWidth2;
+    smallerDimension2 = picHeight2;
+    widthLarger2 = true;
+    //Landscape image larger image to smaller rectangle (or larger)
+  } else { //False if Portrait
+    largerDimension2 = picHeight2;
+    smallerDimension2 = picWidth2;
+    heightLarger2 = true;
+    //Portrait Image larger image to smaller rectangle (or larger)
   }
   //
   //Teaching Example: width is known to be larger
@@ -67,6 +79,8 @@ void setup()
   //
   //Population
   pic = loadImage("../Images Used/Landscape/Obi-wan-star-wars-jedi-23864621-800-600.jpg");
+  pic2 = loadImage("../Images Used/Landscape/");
+  pic3 = loadImage("../Images Used/Landscape/");
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
